@@ -28,13 +28,7 @@ const questions = [
   {
     type: "checkbox",
     message: "What type of license do you want?",
-    choices: [
-      "MIT",
-      "creative commons",
-      "GNU Public License",
-      "Apache",
-      "None",
-    ],
+    choices: ["MIT", "ISC", "Zlib", "None"],
     name: "license",
   },
   {
@@ -49,27 +43,31 @@ const questions = [
   },
   {
     type: "input",
-    message: "What questions do you have?",
-    name: "questions",
+    message: "What's your github username?",
+    name: "github",
+  },
+  {
+    type: "input",
+    message: "What's your email address?",
+    name: "email",
   },
 ];
 
 // function to write README file
 function writeToFile(fileName, data) {
-  inquirer.prompt(questions).then(function (response) {
-    var markdownData = generateMarkdown(response);
-    fs.writeFile("README.md", markdownData, function (err) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(response);
-    });
+  fs.writeFile(fileName, data, function (err) {
+    if (err) {
+      return console.log(err);
+    }
   });
 }
 
 // function to initialize program
 function init() {
-  writeToFile();
+  inquirer.prompt(questions).then(function (response) {
+    var markdownData = generateMarkdown(response);
+    writeToFile("README.md", markdownData);
+  });
 }
 // function call to initialize program
 init();
