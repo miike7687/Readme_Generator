@@ -12,9 +12,9 @@
   ### Description
   * An opportunity to teach others how to generate a README markdown file.
   ### Installation
-  * Install through node.js in the terminal.
+  * Install through node.js
   ### Usage
-  * Create a README to teach others how to create a README
+  * Create a README to teach others how to create a README markdown file
   ### License
   * This application is covered under MIT.
   ### Contributing
